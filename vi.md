@@ -7,14 +7,14 @@ Năm ngoái khi tôi bắt đầu lên kế hoạch thiết kế lại [HEROized
 [CSS Modules](http://www.sitepoint.com/understanding-css-modules-methodology/) lúc bấy giờ vẫn đang trong những giai đoạn đầu phát triển và còn khá mới mẻ và tôi luôn luôn cho rằng sự tương đồng trong cấu trúc [Atomic Design](http://patternlab.io/) thì sẽ nhân tạo hơn. Sau đó tôi bắt gặp ITCSS của [Roberts’s](https://csswizardry.com/) trong những vấn đề của [net magazine](https://www.creativebloq.com/web-design/manage-large-scale-web-projects-new-css-architecture-itcss-41514731) tháng 6 năm 2015 và tôi gần như ngay lập tức bị mê hoặc bởi sự đơn giản, thực tế trong cách nó tiếp cận CSS.
 
  ### vậy ITCSS là gì?
- ITCSS đại diện cho Inverted Triangle CSS và nó giúp bạn tổ chức các file CSS trong dự án của bạn sao cho bạn có thể **giải quyết** những vấn đề liên quan đến CSS(mà không phải lúc nào cũng dễ giái quyết) như **global namespace, cascade và selectors specificity**.
+ ITCSS đại diện cho Inverted Triangle CSS và nó giúp bạn tổ chức các file CSS trong dự án của bạn sao cho bạn có thể **giải quyết** những vấn đề liên quan đến CSS (you can better deal) **tốt hơn** (mà không phải lúc nào cũng dễ giái quyết) như **global namespace, cascade và selectors specificity**.
 ITCSS có thể được sử dụng với các bộ tiền xử lý hoặc cũng có thể không và nó tương thích với các phương pháp luận CSS như BEM, SMACSS hoặc OOCSS.
-Một trong nhưngx nguyên tắc quan trọng của ITCSS là nó chia codebase CSS của bạn thành một vài phần nhỏ (gọi là các lớp), có dạng của tam giác ngược như hình vẽ:
+Một trong ~~nhưngx~~ **những** nguyên tắc quan trọng của ITCSS là nó chia codebase CSS của bạn thành một vài phần nhỏ (gọi là các lớp), có dạng của tam giác ngược như hình vẽ:
 ![inverted triangle](https://other.media/wp-content/uploads/2017/01/itcss_2.png)
 Thông tin chi tiết về các lớp như sau:
- - Settings (các cài đặt) - dùng với các tiền xử lý và bao gồm phông chứ, định nghĩa màu sắc, vân vân.
+ - Settings (các cài đặt) - dùng với các tiền xử lý và bao gồm phông chứ, định nghĩa màu sắc, ~~vân vân~~ **v.v...**.
  - Tool (công cụ) - sử dụng các mixins và các hàm ở mức global. Điều quan trọng là không được ghi bất kỳ CSS nào ở 2 lớp đầu tiên.
- - Generic (chung) - cài đặt lại và/hoặc tiêu chuẩn hóa các mẫu (styles), định nghĩa kích thước các box, vân vân. Đây là lớp đầu tạo ra CSS.
+ - Generic (chung) - cài đặt lại và/hoặc tiêu chuẩn hóa các mẫu (styles), định nghĩa kích thước các box, ~~vân vân~~ **v.v..**. Đây là lớp đầu tạo ra CSS.
  - Elements (phần tử) - tạo mẫu cho các phần tử HTML cở bản ( như H1, a, vân vân). Mặc định nó sẽ theo những mẫu của trình duyệt và bạn có thể định nghĩa lại chúng ở đây.
  - Objects (đối tượng) - bộ chọn (selectors) dựa trên lớp, định nghĩa các mẫu thiết kế chưa được trang trí, ví dụ như đối tượng media từ OOCSS.
  - Components (thành phần) - đặc tả các thành phần UI. Phần lớn công việc của chúng ta là ở đây và các thành phần UI thường bao gồm các Đối tượng và các Thành phần.
@@ -26,7 +26,7 @@ Như vậy, cấu tạo CSS sẽ giúp bạn tránh các Specificity Wars và đ
 Cập nhật ngày 27 tháng 10 năm 2016 : net magazine vừa mới tái xuất bản bài báo gốc từ phiên bản tạp chí (xem nguồn bên dưới)
 Bình thường thì lúc này tôi sẽ bảo các bạn tới các [trang web về ITCSS](https://itcss.io/) để tìm hiểu sâu hơn. Nhưng tiếc thay hiện giờ không có tài liệu mã nguồn mở nào cả.
 ITCSS hiện nãy vẫn còn một phần thuộc sở hữu độc quyền nên nếu bạn muốn hoàn toàn sử dụng nó, bạn nên đọc bài giới thiệu gốc từ net magazine. Tôi không ở đây để phán xét quyết định của tác giả (tôi cảm ơn ông ý vì đã chia sẻ kiến thức), nhưng tôi nghĩ điều này sẽ ngăn cản ITCSS được kế thừa rộng rãi (có thể đây chính là chủ ý của ông ấy).
- > Tính độc quyền một phần của ITCSS sẽ ngăn nó được ekes thể rộng rãi
+ > Tính độc quyền một phần của ITCSS sẽ ngăn nó được ~~ekes~~ **áp dụng** thể rộng rãi
 
 Các bạn không nên vì điều này mà không bắt đầu sử dụng nó trong các dự án của mình nếu bạn thực sự thích nó. Xem các [vấn đề đặc biệt](https://www.myfavouritemagazines.co.uk/design/net-magazine-back-issues/) của net magazine để học các vấn đề cơ bản của ITCSS, và sau đó bạn có thể học từ các nguồn online và qua các ví dụ áp dụng nó trong các dự án thực tế.
 ### Nguồn
