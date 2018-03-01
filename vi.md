@@ -1,15 +1,15 @@
 ## ITCSS: KĨ THUẬT MỞ RỘNG BẢO TRÌ CSS 
 Lubos Kmetko ngày 10 tháng 2, 2016 
-### Làm thế nào để khiến css có thể mở rộng và bảo trì ?Nó là 1 vấn đề cần quan tâm của mỗi lập trình viên front-end. Và ITCSS sẽ là câu trả lời cho họ.
+### Làm thế nào để khiến css có thể mở rộng và bảo trì ?Nó là 1 vấn đề cần quan tâm của mỗi lập trình viên front-end. Và ITCSS là câu trả lời.
 
 Năm ngoái khi tôi bắt đầu lên kế hoạch thiết kế lại [HEROized](https://www.heroized.com/) và thiết kế cho trang mới Xfive.co, tôi đa tìm kiếm một kĩ thuật CSS cho phép dễ dàng phát triển trang web của mình cũng như là bảo trì về sau.
 
-[CSS Modules](http://www.sitepoint.com/understanding-css-modules-methodology/) lúc bấy giờ vẫn đang trong những giai đoạn đầu phát triển và còn khá mới mẻ và tôi luôn luôn cho rằng sự tương đồng trong cấu trúc [Atomic Design](http://patternlab.io/) thì sẽ nhân tạo hơn. Sau đó tôi bắt gặp ITCSS của [Roberts’s](https://csswizardry.com/) trong những vấn đề của [net magazine](https://www.creativebloq.com/web-design/manage-large-scale-web-projects-new-css-architecture-itcss-41514731) tháng 6 năm 2015 và tôi gần như ngay lập tức bị mê hoặc bởi sự đơn giản, thực tế trong cách nó tiếp cận CSS.
+[CSS Modules](http://www.sitepoint.com/understanding-css-modules-methodology/) lúc bấy giờ vẫn đang trong những giai đoạn đầu phát triển và còn khá mới mẻ và tôi luôn luôn cho rằng sự tương đồng trong cấu trúc [Atomic Design](http://patternlab.io/) thì sẽ dễ nhân tạo hơn. Sau đó tôi bắt gặp ITCSS của [Roberts’s](https://csswizardry.com/) trong những vấn đề của [net magazine](https://www.creativebloq.com/web-design/manage-large-scale-web-projects-new-css-architecture-itcss-41514731) tháng 6 năm 2015 và tôi gần như ngay lập tức bị mê hoặc bởi sự đơn giản, thực tế trong cách nó tiếp cận CSS.
 
- ### vậy ITCSS là gì?
+ ### ITCSS là gì?
  ITCSS đại diện cho Inverted Triangle CSS và nó giúp bạn tổ chức các file CSS trong dự án của bạn sao cho bạn có thể **giải quyết** những vấn đề liên quan đến CSS(mà không phải lúc nào cũng dễ giái quyết) như **global namespace, cascade và selectors specificity**.
 ITCSS có thể được sử dụng với các bộ tiền xử lý hoặc cũng có thể không và nó tương thích với các phương pháp luận CSS như BEM, SMACSS hoặc OOCSS.
-Một trong nhưngx nguyên tắc quan trọng của ITCSS là nó chia codebase CSS của bạn thành một vài phần nhỏ (gọi là các lớp), có dạng của tam giác ngược như hình vẽ:
+Một trong những nguyên tắc quan trọng của ITCSS là nó chia codebase CSS của bạn thành một vài phần nhỏ (gọi là các lớp), có dạng của tam giác ngược như hình vẽ:
 ![inverted triangle](https://other.media/wp-content/uploads/2017/01/itcss_2.png)
 Thông tin chi tiết về các lớp như sau:
  - Settings (các cài đặt) - dùng với các tiền xử lý và bao gồm phông chứ, định nghĩa màu sắc, vân vân.
