@@ -1,6 +1,6 @@
 ### Đặt lại box-sizing 
 
-Đặt lại box-model để các `width`s và `height` không bị ảnh hưởng bởi `border`s hay `padding` của chúng.
+Đặt lại box-model để các `width` và `height` không bị ảnh hưởng bởi `border`s hay `padding` của chúng.
 
 #### CSS
 
@@ -36,7 +36,7 @@ html {
 
 #### Giải thích 
 
-1. `box-sizing: border-box` khiến phần thêm của `padding` hoặc `border`s không ảnh hưởng  đến`width` hoặc `height` của 1 phần từ.
+1. `box-sizing: border-box` khiến phần thêm của các `padding` hoặc `border` không ảnh hưởng  đến `width` hoặc `height` của 1 phần từ.
 2. `box-sizing: inherit` làm nó tuân theo luật `box-sizing` của cha nó.
 
 #### Hỗ trợ trình duyệt 
@@ -50,9 +50,9 @@ html {
 
 ### Clearfix
 
-Đảm bảo 1 phần tử tự dọn các con cửa nó.
+Đảm bảo 1 phần tử tự dọn các con của nó.
 
-###### Lưu ý: Điều này chỉ có ích nếu bạn vẫn sử dụng float để xây dựng các bố cục. Hãy cân nhắc sử dụng cách tiếp cận hiện đại với bố cục flexbox hay bố cục grid. 
+###### Lưu ý: Điều này chỉ có ích nếu bạn vẫn sử dụng float để xây dựng các bố cục. Hãy cân nhắc sử dụng phương pháp hiện đại với flexbox hoặc grid. 
 
 #### HTML
 
@@ -104,18 +104,18 @@ html {
 
 1. `.clearfix::after` định nghĩa 1 phần tử giả(pseudo-element).
 2. `content: ''`cho phép phần từ giả ảnh hưởng tới bố cục.
-3. `clear: both` chỉ ra rằng bên trái, phải hoặc cả 2 bên của phần tử không thể liền kệ với các phần tử float trước đó trong cùng 1 khối định dạng. 
+3. `clear: both` chỉ ra rằng bên trái, phải hoặc cả 2 bên của phần tử không thể được liền kề với các phần tử float trước đó trong cùng 1 khối định dạng. 
 
 #### Hỗ trợ trình duyệt
 99+%
 <span class="snippet__support-note">⚠️ 
-Để phần này thực hiện đúng bạn cần đảm bảo rằng không có phần tử con không float nào trong container và không có phần float nào trước clearfixed container trong cùng định dạng (ví dụ như các cột float).</span>
+ Để đoạn mã này hoạt động đúng bạn cần đảm bảo rằng không có phần tử con nào trong container và không có float trước khi có container rõ ràng trong cùng định dạng (ví dụ như các cột float).</span>
 
 <!-- tags: layout -->
 
 ### Cố định tỉ lệ chiều rộng với chiều cao
 
-Với mỗi biến chiều rộng của một phần từ, hãy đảm bảo rằng chiều cao của nó vẫn tương xứng theo cách thức responsive (tức là tỉ lệ chiều rộng với chiều cao vẫn không đổi)
+Với mỗi biến chiều rộng của một phần từ, hãy đảm bảo rằng chiều cao của nó vẫn tương xứng theo một kiểu phù hợp (tức là tỉ lệ chiều rộng với chiều cao vẫn không đổi)
 
 #### HTML
 
@@ -173,7 +173,7 @@ Thay đổi cửa số trình duyệt để thấy tỉ lệ của phần tử v
 
 `padding-top` đặt ở `::before` phần tử mẫu khiến chiếu cao của phần tử luôn bằng một tỉ lệ với chiều rộng của nó `100%` vì vậy nghĩa là chiều cao của phần từ luôn luôn cùng với 100% chiều rộng, tạo 1 khung responsive.
 
-Phtương hức này cũng cho phép nội dung được đặt bên trong của phần tử một cách bình thường.
+Phương thức (phương pháp) này cũng cho phép nội dung được đặt bên trong của phần tử một cách bình thường.
 
 #### Hỗ trợ trình duyệt
 
@@ -240,7 +240,7 @@ Cách khác là, sử dụng `justify-content: space-around` để phân bố c�
 
 ### Flexbox centering
 
-Đặt phần tử con ở trung tâm phần từ cha theo chiều ngang cũng như dọc sử dụng `flexbox`.
+Căn giữa phần từ cha theo chiều ngang cũng như dọc sử dụng `flexbox`.
 
 #### HTML
 
@@ -280,8 +280,8 @@ Cách khác là, sử dụng `justify-content: space-around` để phân bố c�
 #### Giải thích 
 
 1. `display: flex` bật flexbox.
-2. `justify-content: center` đặt trung tâm phần tử con theo chiều ngang.
-3. `align-items: center` đặt trung tâm phần tử con theo chiều .
+2. `justify-content: center` căn giữa phần tử con theo chiều ngang.
+3. `align-items: center`căn giữa phần tử con theo chiều dọc .
 
 #### Hỗ trợ trình duyệt
 
@@ -293,7 +293,7 @@ Cách khác là, sử dụng `justify-content: space-around` để phân bố c�
 
 ### Grid centering
 
-Đặt phần tử con ở trung tâm phần từ cha theo chiều ngang cũng như dọc sử dụng `grid`.
+Căn giữa phần từ cha theo chiều ngang cũng như dọc sử dụng `grid`.
 
 #### HTML
 
@@ -332,9 +332,9 @@ Cách khác là, sử dụng `justify-content: space-around` để phân bố c�
 
 #### Giải thích
 
-1. `display: grid` enables grid.
-2. `justify-content: center` centers the child horizontally.
-3. `align-items: center` centers the child vertically.
+1. `display: grid` cho phép grid.
+2. `justify-content: center` căn giữa phần tử con theo chiều ngang.
+3. `align-items: center`  căn giữa phần tử con theo chiều dọc.
 
 #### Hỗ trợ trình duyệt
 
@@ -444,7 +444,7 @@ Bố cục website cơ bản sử dụng `grid`.
 2. `grid-gap: 10px` định nghĩa khoảng trống giữa các phần tử.
 3. `grid-template-columns: repeat(3, 1fr)` định nghĩa 3 cột cùng 1 kích thước.
 4. `grid-template-areas` định nghĩa tên của các vùng grid 
-5. `grid-area: sidebar` tạo ra phần tử sử dụng vùng với tên `sidebar`.
+5. `grid-area: sidebar` làm cho phần tử sử dụng vùng có tên `sidebar`.
 
 #### Hỗ trợ trình duyệt
 
@@ -454,9 +454,9 @@ Bố cục website cơ bản sử dụng `grid`.
 
 <!-- tags: layout -->
 
-### Loại bỏ text
+### Cắt bớt text
 
-Nếu văn bản dài hơn 1 dòng, nó sẽ bị loại bỏ và kết thức bằng dấu chấm lửng  `…`.
+Nếu văn bản dài hơn 1 dòng, nó sẽ bị loại bỏ và kết thức bằng dấu chấm phẩy  `…`. ( chấm phẩy nghe cho nó quốc dân :])
 
 
 #### HTML
@@ -697,7 +697,7 @@ Thay đỏi kiểu của văn bản được chọn.
 
 <!-- tags: visual -->
 
-### Bóng động
+### Đổ bóng động
 
 Tạo 1 bóng tương tự như `box-shadow` nhưng dựa trên màu của chính phần tử đó.
 
