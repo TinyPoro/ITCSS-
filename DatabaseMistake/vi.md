@@ -4,11 +4,11 @@ _source https://stackoverflow.com/questions/621884/database-development-mistakes
 
 **1. Không sử dụng các chỉ mục thích hợp**
 
-Đây là 1 vấn đề tươngương đối đơn giản những vẫn xảy ra hàng ngày. Các khóa ngoại nên có các chỉ mục. Nếu bạn đang sử dụng 1 trường trong mệnh đề WHERE bạn nên (có lẽ) có chỉ mục trên nó. Các chỉ mục thường nên gồm nhiều cột dựa trên câu truy vấn bạn thực hiện.
+Đây là 1 vấn đề tương đối đơn giản những vẫn xảy ra hàng ngày. Các khóa ngoại nên có các chỉ mục. Nếu bạn đang sử dụng 1 trường trong mệnh đề WHERE bạn nên (có lẽ) có chỉ mục trên nó. Các chỉ mục thường nên gồm nhiều cột dựa trên câu truy vấn bạn thực hiện.
 
 **2. Không sử dụng các ràng buộc tham chiếu**
 
-Cơ sở dữ liệu của bạn có thể thay đổi nhưng nếu nó hỗ trợ ràng buộc tham chiếu-- tức là tất cả các khóa ngoại được đảm bảo cho 1 thực thể tổn tại -- bạn nên sử dụng nó.
+Cơ sở dữ liệu của bạn có thể thay đổi nhưng nếu nó hỗ trợ ràng buộc tham chiếu-- tức là tất cả các khóa ngoại được đảm bảo ~~cho~~ (to point to) **trỏ đến** 1 thực thể tổn tại -- bạn nên sử dụng nó.
 
 Rất hay thấy lỗi như thế này trên cơ sở dữ liệu MySQL. Tôi không nghĩ rằng MyISAM hỗ trợ nó. Nhưng InnoDB thì có. Bạn sẽ thấy những người sử dụng MyISAM hay những cơ sở dữ liệu khác hỗ trợ InnoDB nhưng không sử dụng nó
 
@@ -33,7 +33,7 @@ Theo ý kiến của tôi, bạn nên **luôn luôn** sử dụng khóa đại d
 Đây phần nào là 1 chủ đề gây tranh cãi khi không được chấp nhận rộng rãi. Trong khi bạn cố gắng tìm ra 1 người nghĩ rằng khóa thường trong 1 vài trường hợp thì ok, bạn sẽ không thấy bất kỳ sự chỉ trích nào dành cho khóa đại diện cũng như cho rằng nó không cần thiết, Đây là 1 nhược điểm nhỏ nếu bạn hỏi tôi
 
 
-Nhớ rằng, thậm chí [ các quốc gia không còn tồn tại][countries can cease to exist](http://en.wikipedia.org/wiki/ISO_3166-1) (ví dụ, Nam Tư)
+Nhớ rằng, thậm chí [ các quốc gia có thể không còn tồn tại][countries can cease to exist](http://en.wikipedia.org/wiki/ISO_3166-1) (ví dụ, Nam Tư)
 **4. Viết các câu trúy vấn được yêu cầu 
 
 Để DISCTINCE hoạt động**
@@ -42,7 +42,7 @@ Bạn sẽ thường thấy nó trong các câu truy vấn khởi tạo ORM. Nh�
 
 SELECT DISTINCT ...
 
-Sẽ mất 1 lục để đảm bảo bạn không tạo ra các dòng bị trùng và dẫn đến các đối tượng bị trùng. Bạn sẽ thỉnh thoảng thấy vài người làm như vậy. Nếu bạn thấy điều này quá nhiều thì thực sự đáng báo động đấy.Không phải do DISTINCE tệ háy không có các ứng dụng hợp lệ. Nó tốt (cả 2 mặt) nhưng nó không phải đại diện hoặc tạm thời để viết các câu truy vấn đúng.
+Sẽ mất 1 lục để đảm bảo bạn không tạo ra các dòng bị trùng và dẫn đến các đối tượng bị trùng. Bạn sẽ thỉnh thoảng thấy vài người làm như vậy khá tốt (You'll sometimes see people doing this as well). Nếu bạn thấy điều này quá nhiều thì thực sự đáng báo động đấy.Không phải do DISTINCE tệ hay không có các ứng dụng hợp lệ. Nó tốt (cả 2 mặt) nhưng nó không phải đại diện hoặc tạm thời để viết các câu truy vấn đúng.
 
 Từ [Tại sao tôi ghét DISCTINCT](http://weblogs.sqlteam.com/markc/archive/2008/11/11/60752.aspx):
 
@@ -80,7 +80,7 @@ AND t1.roleid = 1
 
 **6. Không đơn giản hóa các câu truy vấn phức tạp qua view**
 
-Không phải tất cả các nhà cung cấp cơ sở dữ liệu hỗ trợ viewiew nhưng chúng đều cóó thể đơn giản hóa các câu truy vấn nếu sử dụng 1 cách khôn ngoan. Ví dụ, trong 1 dự án tôi sử dụng [generic Party model](http://www.tdan.com/view-articles/5014/) cho CRM. Đấy là 1 kỹ thuật mô hình rất mạnh và linh hoạt có thể sử dụng nhiều phép nối. Trong mô hình này có :
+Không phải tất cả các nhà cung cấp cơ sở dữ liệu hỗ trợ view nhưng chúng đều có thể đơn giản hóa các câu truy vấn nếu sử dụng 1 cách khôn ngoan. Ví dụ, trong 1 dự án tôi sử dụng [generic Party model](http://www.tdan.com/view-articles/5014/) cho CRM. Đấy là 1 kỹ thuật mô hình rất mạnh và linh hoạt có thể sử dụng nhiều phép nối. Trong mô hình này có :
 
 - **Party**: con người và các tổ chức;
 - **Party Role**: các việc mà các nhóm làm , như nhân viên và nhà tuyển dụng;
@@ -95,7 +95,7 @@ Ví dụ:
 - Intel tuyển Ted, nghĩa là có quan hệ giữa các luật tương ứng của chúng.
 
 So there are five tables joined to link Ted to his employer. You assume all employees are Persons (not organisations) and provide this helper view:
-Do vậy, có 5 bảng nối để kếtết nối Ted với các nhà tuyển dụng của anh ý.Giả định rằng các nhân viên là Persons(không phải các tổ chức) và cung cấp các view hỗ trợ
+Do vậy, có 5 bảng nối để kết nối Ted với các nhà tuyển dụng của anh ý.Giả định rằng các nhân viên là Persons(không phải các tổ chức) và cung cấp các view hỗ trợ
 CREATE VIEW vw_employee AS
 SELECT p.title, p.given_names, p.surname, p.date_of_birth, p2.party_name employer_name
 FROM person p
