@@ -4,11 +4,11 @@ _source https://stackoverflow.com/questions/621884/database-development-mistakes
 
 **1. Không sử dụng các chỉ mục thích hợp**
 
-Đây là 1 vấn đề tươngương đối đơn giản những vẫn xảy ra hàng ngày. Các khóa ngoại nên có các chỉ mục. Nếu bạn đang sử dụng 1 trường trong mệnh đề WHERE bạn nên (có lẽ) có chỉ mục trên nó. Các chỉ mục thường nên gồm nhiều cột dựa trên câu truy vấn bạn thực hiện.
+Đây là 1 vấn đề ~~tươngương~~ đối đơn giản những vẫn xảy ra hàng ngày. Các khóa ngoại nên có các chỉ mục. Nếu bạn đang sử dụng 1 trường trong mệnh đề WHERE bạn nên (có lẽ) có chỉ mục trên nó. Các chỉ mục thường nên gồm nhiều cột dựa trên câu truy vấn bạn thực hiện.
 
 **2. Không sử dụng các ràng buộc tham chiếu**
 
-Cơ sở dữ liệu của bạn có thể thay đổi nhưng nếu nó hỗ trợ ràng buộc tham chiếu-- tức là tất cả các khóa ngoại được đảm bảo cho 1 thực thể tổn tại -- bạn nên sử dụng nó.
+Cơ sở dữ liệu của bạn có thể thay đổi nhưng nếu nó hỗ trợ ràng buộc tham chiếu-- tức là tất cả các khóa ngoại được đảm bảo ~~cho~~ **tham chiếu đến / trỏ đến ( to point to )** 1 thực thể tổn tại -- bạn nên sử dụng nó.
 
 Rất hay thấy lỗi như thế này trên cơ sở dữ liệu MySQL. Tôi không nghĩ rằng MyISAM hỗ trợ nó. Nhưng InnoDB thì có. Bạn sẽ thấy những người sử dụng MyISAM hay những cơ sở dữ liệu khác hỗ trợ InnoDB nhưng không sử dụng nó
 
@@ -49,7 +49,7 @@ Từ [Tại sao tôi ghét DISCTINCT](http://weblogs.sqlteam.com/markc/archive/2
 > Where things start to go sour in my opinion is when a developer is building substantial query, joining tables together, and all of a sudden he realizes that it **looks** like he is getting duplicate (or even more) rows and his immediate response...his "solution" to this "problem" is to throw on the DISTINCT keyword and **POOF** all his troubles go away.
 > Mọi thứ bắt đầu dến trong tâm trí tôi khi 1 nhà phát triển bắt đầu viết câu truy vấn đáng kể, nối các bảng lại với nhau, và bỗng nhiên anh ý nhận ra nó **trông** như kiểu ông ý đang lấy các dòng trùng nhau(thậm chí nhiều hơn) và câu trả lời ngay lập tức của anh ý ..... "cách giải quyết" của anh ý cho "vấn đề" này là ném từ khóa DISTINCE và **ném** tất cả các rắc rối đi.
 
-**5. Thích các phép gộp hơn và phép nối**
+**5. Khuyến khích tập hợp các kết nối (Favouring aggregation over joins)**
 Một trong những lỗi phổ biến của các nhà phát triển ứng dụng cơ sở dữ liệu là không nhận ra phép hợp(ví dụ như mệnh đề GROUP BY) tốn kém hơn thế nào so với các phép nối.
 
 Để cho bạn 1 ý tưởng về điều này phổ biến rộng rãi như thế nào, tôi đã viết về chủ đề này vài lần ở đây và đã bị vote down rất nhiều. Ví dụ:
@@ -76,7 +76,7 @@ AND t1.roleid = 1
 
 > thơi gian truy vấn: 0.016 s
 
-> Đúng vậy. Phiên bản nối tôi đề xuất **nhanh gấp 2 lần phiên bản nhóm.**
+> Đúng vậy. Phiên bản nối tôi đề xuất **nhanh gấp 2 **20 lần mà homie** (twenty times) lần phiên bản nhóm.**
 
 **6. Không đơn giản hóa các câu truy vấn phức tạp qua view**
 
@@ -88,14 +88,14 @@ Không phải tất cả các nhà cung cấp cơ sở dữ liệu hỗ trợ vi
 
 Ví dụ:
 
-- Ted là 1 Person, là 1 tập con Party;
+- Ted là 1 Person, là 1 tập con **phần tử nghe hay hơn** Party;
 - Ted có nhiều luật, 1 trong số chúng là Employee;
 - Intel là 1 tổ chức, là 1 tập con cửa Party;
 - Intel có nhiều luật, 1 trong số chúng là Employer;
 - Intel tuyển Ted, nghĩa là có quan hệ giữa các luật tương ứng của chúng.
 
 So there are five tables joined to link Ted to his employer. You assume all employees are Persons (not organisations) and provide this helper view:
-Do vậy, có 5 bảng nối để kếtết nối Ted với các nhà tuyển dụng của anh ý.Giả định rằng các nhân viên là Persons(không phải các tổ chức) và cung cấp các view hỗ trợ
+Do vậy, có 5 bảng nối để ~~kếtết~~ nối Ted với các nhà tuyển dụng của anh ý.Giả định rằng các nhân viên là Persons(không phải các tổ chức) và cung cấp các view hỗ trợ
 CREATE VIEW vw_employee AS
 SELECT p.title, p.given_names, p.surname, p.date_of_birth, p2.party_name employer_name
 FROM person p
